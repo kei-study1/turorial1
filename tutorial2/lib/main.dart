@@ -236,50 +236,136 @@ void main() {
 //   }
 // }
 
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     List<String> list = [
+//       "メッセージ1", "メッセージ2", "メッセージ3", "メッセージ4"
+//     ];
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: Text('title'),
+//         ),
+//         body: ListView.builder(
+//           itemBuilder: (BuildContext context, int index) {
+//             if (index >= list.length) {
+//               list.add("メッセージ" + (index + 1).toString());
+//             }
+//             return _messageItem(list[index], (index+1) % 2);
+//           }
+//         ),
+//       )
+//     );
+//   }
+//   Widget _messageItem(String title, int flg) {
+//     return Container(
+//       decoration: new BoxDecoration(
+//         color: (flg == 1) ? Colors.redAccent : Colors.redAccent[400],
+//         border: new Border(bottom: BorderSide(width: 3, color: Colors.yellow))
+//       ),
+//       child: ListTile (
+//         title: Text(
+//           title,
+//           style: TextStyle(
+//             color: Colors.black,
+//             fontSize: 18,
+//           )
+//         ),
+//         onTap: () => print("onTap called." + title + ":" + flg.toString()),
+//       ),
+//     );
+//   }
+// }
+// git test
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     var list = [
+//       _photoItem("pic0"),
+//       _photoItem("pic1"),
+//       _photoItem("pic2"),
+//       _photoItem("pic3"),
+//       _photoItem("pic4"),
+//       _photoItem("pic5"),
+//     ];
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: Text('title'),
+//         ),
+//         // body: GridView.count(
+//         //   crossAxisCount: 2,
+//         //   children: list,
+//         // )
+//         // body: GridView.extent(
+//         //   maxCrossAxisExtent: 160,
+//         //   padding: const EdgeInsets.all(4),
+//         //   mainAxisSpacing: 4,
+//         //   crossAxisSpacing: 4,
+//         //   children: list,
+//         // )
+//       )
+//     );
+//   }
+//   Widget _photoItem(String image) {
+//     var assetsImage = "assets/img/" + image + ".png";
+//     return Container(
+//       child: Image.asset(assetsImage, fit: BoxFit.cover,),
+//     );
+//   }
+// }
+
 class MyApp extends StatelessWidget {
+  MyApp({super.key});
+  var list = [
+    "pic0",
+    "pic1",
+    "pic2",
+    "pic3",
+    "pic4",
+    "pic5",
+  ];
+  List<String> grid = [];
   @override
   Widget build(BuildContext context) {
-    List<String> list = [
-      "メッセージ1", "メッセージ2", "メッセージ3", "メッセージ4"
-    ];
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: Text('title'),
-        ),
-        body: ListView.builder(
-          itemBuilder: (BuildContext context, int index) {
-            if (index >= list.length) {
-              list.add("メッセージ" + (index + 1).toString());
+          ),
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: GridView.builder(
+            // gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            //   crossAxisCount: 4,
+            // ),
+            scrollDirection: Axis.horizontal,
+            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 170,
+              mainAxisSpacing: 5,
+              crossAxisSpacing: 5,
+              childAspectRatio: 0.5
+            ),
+            itemBuilder: (BuildContext context, int index) {
+              if (index >= grid.length) {
+                grid.addAll(list);
+              }
+              return _photoItem(grid[index]);
             }
-            return _messageItem(list[index], (index+1) % 2);
-          }
+          ),
         ),
       )
     );
   }
-  Widget _messageItem(String title, int flg) {
+  Widget _photoItem(String image) {
+    var assetsImage = "assets/img/" + image + ".png";
     return Container(
-      decoration: new BoxDecoration(
-        color: (flg == 1) ? Colors.redAccent : Colors.redAccent[400],
-        border: new Border(bottom: BorderSide(width: 3, color: Colors.yellow))
-      ),
-      child: ListTile (
-        title: Text(
-          title,
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 18,
-          )
-        ),
-        onTap: () => print("onTap called." + title + ":" + flg.toString()),
-      ),
+      child: Image.asset(assetsImage, fit: BoxFit.cover,),
     );
   }
 }
-// git test
-
-
 
 
 
