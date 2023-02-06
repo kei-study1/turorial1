@@ -317,55 +317,156 @@ void main() {
 //   }
 // }
 
+// class MyApp extends StatelessWidget {
+//   MyApp({super.key});
+//   var list = [
+//     "pic0",
+//     "pic1",
+//     "pic2",
+//     "pic3",
+//     "pic4",
+//     "pic5",
+//   ];
+//   List<String> grid = [];
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: Text('title'),
+//           ),
+//         body: Padding(
+//           padding: const EdgeInsets.all(8.0),
+//           child: GridView.builder(
+//             // gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+//             //   crossAxisCount: 4,
+//             // ),
+//             scrollDirection: Axis.horizontal,
+//             gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+//               maxCrossAxisExtent: 170,
+//               mainAxisSpacing: 5,
+//               crossAxisSpacing: 5,
+//               childAspectRatio: 0.5
+//             ),
+//             itemBuilder: (BuildContext context, int index) {
+//               if (index >= grid.length) {
+//                 grid.addAll(list);
+//               }
+//               return _photoItem(grid[index]);
+//             }
+//           ),
+//         ),
+//       )
+//     );
+//   }
+//   Widget _photoItem(String image) {
+//     var assetsImage = "assets/img/" + image + ".png";
+//     return Container(
+//       child: Image.asset(assetsImage, fit: BoxFit.cover,),
+//     );
+//   }
+// }
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: Text('Stack'),
+//         ),
+//         body: Stack(
+//           children: <Widget>[
+//             Container(
+//               width: 100,
+//               height: 100,
+//               color: Colors.greenAccent,
+//             ),
+//             Container(
+//               width: 50,
+//               height: 80,
+//               color: Colors.orange,
+//             ),
+//           ],
+//         ),
+//       )
+//     );
+//   }
+// }
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(title: Text('Stack'),),
+//         body: Stack(
+//           alignment: Alignment.bottomLeft,
+//           children: <Widget>[
+//             SizedBox(
+//               width: 500,
+//               height: 700,
+//               child: Container(color: Colors.pink[700]),
+//             ),
+//             Positioned(
+//               left: 20,
+//               top: 100,
+//               width: 300,
+//               height: 300,
+//               child: Container(color: Colors.blue,),
+//             ),
+//             Positioned(
+//               left: 70,
+//               top: 300,
+//               width: 200,
+//               height: 50,
+//               child: Container(color: Colors.yellow,),
+//             ),
+//             Positioned(
+//               right: 0,
+//               bottom: 0,
+//               width: 200,
+//               height: 600,
+//               child: Container(color: Colors.lightGreen,),
+//             ),
+//             Text('bottom-left'),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
-  var list = [
-    "pic0",
-    "pic1",
-    "pic2",
-    "pic3",
-    "pic4",
-    "pic5",
-  ];
-  List<String> grid = [];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.red,
         appBar: AppBar(
-          title: Text('title'),
-          ),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: GridView.builder(
-            // gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            //   crossAxisCount: 4,
-            // ),
-            scrollDirection: Axis.horizontal,
-            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 170,
-              mainAxisSpacing: 5,
-              crossAxisSpacing: 5,
-              childAspectRatio: 0.5
-            ),
-            itemBuilder: (BuildContext context, int index) {
-              if (index >= grid.length) {
-                grid.addAll(list);
-              }
-              return _photoItem(grid[index]);
-            }
-          ),
+          title: Text('card'),
         ),
+        body: Card(
+          color: Colors.red,
+          margin: const EdgeInsets.all(50),
+          child: Container(
+            margin: const EdgeInsets.all(50),
+            width: 100,
+            height: 100,
+            child: Text(
+              'Card',
+              style: TextStyle(
+                fontSize: 30,
+              )
+            ),
+          ),
+        )
       )
     );
   }
-  Widget _photoItem(String image) {
-    var assetsImage = "assets/img/" + image + ".png";
-    return Container(
-      child: Image.asset(assetsImage, fit: BoxFit.cover,),
-    );
-  }
 }
+
+
 
 
 
